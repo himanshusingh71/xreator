@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Xreator.com</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+    <script src="static.js"> </script>
+  </head>
+  <body class="bg-black font-sans">
+    <header class="border-b border-white p-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/">
+          <div class="text-white lg:text-5xl text-3xl font-bold lg:ml-32">
+            Xreator
+          </div>
+        </a>
+
+        <!-- Navigation Links (Responsive) -->
+        <nav class="hidden lg:flex text-xl font-bold space-x-10 lg:mr-32">
+          <a href="#how-to-use" class="text-white hover:text-blue-700">How to use?</a>
+          <a href="#contact" class="text-white hover:text-blue-700">Contact</a>
+        </nav>
+
+        <!-- Hamburger Menu (Hidden on Larger Screens) -->
+        <div class="lg:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <svg
+              class="w-12 h-12"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="responsive-menu"
+      class="lg:hidden fixed inset-0 bg-black bg-opacity-75 z-50 hidden"
+    >
+      <div class="flex items-center justify-end p-4">
+        <button id="menu-close" class="text-white focus:outline-none">
+          <svg
+            class="w-12 h-12"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col text-2xl items-center font-bold space-y-9">
+        <a id="how-to-use-option" href="#how-to-use" class="text-white">How to use?</a>
+        <a id="contact-option" href="#contact" class="text-white">Contact</a>
+      </nav>
+    </div>
+    <!-- body div starts -->
+    <!-- home-page Text start -->
+    <div class="max-w-2xl mx-auto p-6 bg-black rounded-md shadow-md">
+      <div class="bg-black text-white p-8 rounded-lg shadow-md">
+        <div
+          class="text-5xl leading-24 text-center md:text-3xl lg:text-5xl font-semibold mb-10"
+        >
+         Free AI Tweet Generator </div>
+        </h1>
+        <p class="md:text-2xl text-center text-3xl lg:text-3xl mb-6">
+          Gain More Engagement &nbsp;🔁
+        </p>
+        <p class="md:text-2xl text-center text-3xl lg:text-3xl mb-4">
+           Go Viral &nbsp; 🚀
+        </p>
+      </div>
+      <div class="max-w-full">
+        <img
+          src="/images/elon-musk.png"
+          alt="Image Description"
+          class="w-full h-full rounded-lg shadow-md"
+        />
+      </div>
+      <div class="bg-black text-white p-8 rounded-lg shadow-md mt-16">
+        <p
+          class="text-base leading-10 text-center md:text-lg lg:text-3xl text-2xl mb-8"
+        >
+          Stop struggling to come up with X posts.
+        </p> </div> 
+        <div class="max-w-full">
+          <img
+            src="/images/bill-gates.png"
+            alt="Image Description"
+            class="w-full h-full rounded-lg shadow-md"
+          />
+        </div><div class="bg-black text-white p-8 rounded-lg shadow-md mt-16">
+        <p
+          class="text-base leading-10 text-center md:text-lg lg:text-3xl text-2xl mb-8"
+        >
+          This OpenAi Powered Ai will instantly generate tweets tailored to your brand and
+          audience.
+        </p> </div>
+        <div class="max-w-full">
+          <img
+            src="/images/andrew-tate.png"
+            alt="Image Description"
+            class="w-full h-full rounded-lg shadow-md"
+          />
+        </div>
+        <div class="bg-black text-white p-8 rounded-lg shadow-md mt-16">
+        <p
+          class="text-base leading-10 text-center md:text-lg lg:text-3xl text-2xl mb-8"
+        >
+          Gain more 🩷, 🔁 ,new followers and tons of Engagement 🚀
+        </p></div>
+      </div>
+    </div>
+
+    <!-- home-page Text ends -->
+    <div class=" max-w-lg mx-auto items-center text-white mt-10  xs:ml-10 xs:mr-10">
+      <p class="md:text-2xl   text-center text-3xl lg:text-3xl mb-4">
+        Unlock your inner tweet wizardry! Our app turns 'meh' into 'LOL' –
+        because why settle for ordinary when your tweets can be extraordinary?
+
+      </p>
+      <p class="md:text-2xl  mt-16 font-bold  leading-16 text-center text-3xl lg:text-3xl mb-4">
+
+        🚀&nbsp;Ready, set, tweet! &nbsp;🐦
+      </p>
+    </div>
+ 
+    <a href="/tryit" class="block max-w-xs md:max-w-lg mx-auto mt-8 p-6 bg-blue-500 text-center text-white rounded-lg font-bold text-xl sm:text-2xl lg:text-3xl hover:bg-blue-900 hover:text-white  transition duration-300">
+      Create AI-Powered Tweets
+    </a>
+
+      <div id="how-to-use" class="mt-64 max-w-lg mx-auto bg-black  text-5xl  font-bold text-center text-white">
+        <h1>How to use?</h1>
+        <h1 class="mt-8">⬇️</h1>
+      </div>
+
+
+      <!-- STEPS TO GENERATE TWEET -->
+      <div class="flex items-center justify-center ">
+        <div class="max-w-lg flex flex-col items-center justify-center text-blue-300 font-bold p-6 bg-black rounded-md shadow-md">
+          <p class="text-3xl text-center mb-4 mt-16">Press this button</p>
+          <div class="max-w-full border border-white rounded-2xl">
+            <img
+              src="/images/step1.png"
+              alt="Image Description"
+              class="w-full h-full rounded-lg shadow-md"
+            />
+          </div>
+          <p class="text-3xl text-center mb-4 mt-16">Fill Description and other fields</p>
+          <div class="max-w-full border border-white rounded-2xl">
+            <img
+              src="/images/step2.png"
+              alt="Image Description"
+              class="w-full h-full rounded-lg shadow-md"
+            />
+          </div>
+          <p class="text-3xl text-center mb-4 mt-16">Generate</p>
+          <div class="max-w-full border border-white rounded-2xl">
+            <img
+              src="/images/step3.png"
+              alt="Image Description"
+              class="w-full h-full rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+      </div>
+      
+    
+
+
+    <!-- body div ends -->
+    <footer id="contact"
+      class="max-w-2xl text-xs mt-64 text-center mx-auto text-white p-6 bg-black rounded-md shadow-md"
+    >
+      <div class="container mx-auto flex flex-col items-center">
+        <div class="mb-4">
+          <p class="">himanshubt7@gmail.com</p>
+        </div>
+
+        <div class="mb-4 items-center">
+          <p class="text-base hover:text-5xl transform hover:scale-110 ">
+            <a href="https://twitter.com/_HimanshuBisht" class="hover:text-lg"
+              >Twitter: @_HimanshuBisht</a
+            >
+          </p>
+        </div>
+
+        <div class="">
+          <p class="">© 2023 Xreator. Made with 🩷 in India.</p>
+          <p class="">Powered by OpenAI</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("responsive-menu").classList.toggle("hidden");
+        });
+
+      document
+        .getElementById("menu-close")
+        .addEventListener("click", function () {
+          document.getElementById("responsive-menu").classList.add("hidden");
+        });
+
+    </script>
+  </body>
+</html>

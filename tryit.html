@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Xreator.com</title>
+    <style>
+      .error-border {
+        border: 2px solid red;
+      }
+      body {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 0.6s linear infinite;
+        margin: auto;
+        margin-top: 50px;
+      }
+    </style>
+    <script src="main.js"></script>
+  </head>
+  <body class="bg-black font-sans">
+    <header class="border-b border-white p-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/">
+          <div class="text-white lg:text-5xl text-3xl font-bold lg:ml-32">
+            Xreator
+          </div>
+        </a>
+
+        <!-- Navigation Links (Responsive) -->
+        <nav class="hidden lg:flex text-xl font-bold space-x-10 lg:mr-32">
+          <a href="#contact" class="text-white hover:text-blue-700">Contact</a>
+        </nav>
+
+        <!-- Hamburger Menu (Hidden on Larger Screens) -->
+        <div class="lg:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <svg
+              class="w-12 h-12"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="responsive-menu"
+      class="lg:hidden fixed inset-0 bg-black bg-opacity-75 z-50 hidden"
+    >
+      <div class="flex items-center justify-end p-4">
+        <button id="menu-close" class="text-white focus:outline-none">
+          <svg
+            class="w-12 h-12"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col text-2xl items-center font-bold space-y-9">
+        <a id="contact-option" href="#contact" class="text-white">Contact</a>
+      </nav>
+    </div>
+    <!-- body div starts -->
+    <!-- home-page Text start -->
+
+    <!-- home-page Text ends -->
+
+    <div class="max-w-2xl mt-5 mx-auto p-6 text-white rounded-md shadow-md">
+      <!-- 1) Prompt - TextField -->
+      <div class="mb-6">
+        <label
+          for="prompt"
+          class="block text-center font-bold mb-6 md:text-2xl text-2xl"
+          >Description</label
+        >
+        <textarea
+          id="description"
+          placeholder="Enter a brief description of your tweet content. For example, A cat learning to breakdance..."
+          class="w-full bg-black px-3 md:py-10 py-8 items-center border text-center rounded-lg resize-none focus:outline-none focus:border-white"
+        ></textarea>
+      </div>
+
+      <!-- 2) Tone - Select Box -->
+      <div class="mb-6">
+        <label
+          for="tone"
+          class="block text-center font-bold mb-6 md:text-2xl text-2xl"
+          >Tone</label
+        >
+        <select
+          id="tone"
+          class="w-full bg-black text-white px-3 text-black py-2 text-center border rounded-md focus:outline-none focus:border-white"
+        >
+          <option value="funny">Funny</option>
+          <option value="friendly">Friendly</option>
+          <option value="formal">Formal</option>
+          <option value="casual">Casual</option>
+          <option value="Controversial">Controversial</option>
+          <option value="Sorrowful">Sorrowful</option>
+        </select>
+      </div>
+
+      <!-- 3) Word Count - Number -->
+      <div class="mb-16">
+        <label
+          for="length"
+          class="block text-center font-bold mb-6 md:text-2xl text-2xl"
+          >Length</label
+        >
+        <select
+          id="length"
+          class="w-full bg-black text-white px-3 py-2 border text-center rounded-md focus:outline-none focus:border-white text-black"
+        >
+          <option value="Medium">Medium</option>
+          <option value="Short">Short</option>
+          <option value="Large">Long</option>
+        </select>
+      </div>
+
+      <!-- 5) Hashtags - TextField -->
+
+      <!-- 6) Generate - Button -->
+      <div>
+        <button
+          onclick="validateForm()"
+          type="button"
+          class="w-full bg-blue-500 text-white font-bold hover:bg-blue-900 hover:text-white text-4xl text-black py-6 px-8 rounded-md focus:outline-none focus:shadow-outline-gray"
+        >
+          Generate
+        </button>
+      </div>
+    </div>
+    <!-- loader starts -->
+    <div id="loader" class="max-w-lg mx-auto hidden">
+      <div class="spinner"></div>
+    </div>
+    <!-- loader ends -->
+    <!-- Tweet clone start -->
+    <div class="scroll-here"></div>
+    <div id="final-answer" class="hidden">
+      <div
+        id="results"
+        class="max-w-lg mx-auto text-5xl text-white text-center mt-32"
+      >
+        <p class="w-full text-center">
+          GPT Generated Tweets! &nbsp;<br />🐦🐦🐦
+        </p>
+      </div>
+      <div class="max-w-lg mx-auto px-4 py-3 shadow-md">
+        <div class="first mt-16">
+          <div
+            class="max-w-lg mx-auto flex bg-black text-white px-4 py-3 border border-gray-700 rounded-xl shadow-md"
+          >
+            <img
+              src="/images/cat1.jpeg"
+              alt="Profile picture"
+              class="h-12 w-12 rounded-full mr-4 object-cover"
+            />
+
+            <div class="flex flex-col space-y-2">
+              <div class="flex items-center space-x-2">
+                <a href="#" class="font-bold hover:underline">Meow</a>
+                <span class="font-light">@meeow</span>
+                <span class="font-light">&middot;</span>
+                <span class="font-light">1d</span>
+              </div>
+              <p id="first-result" class="">i'm a tweet</p>
+            </div>
+          </div>
+          <div
+            class="max-w-lg mx-auto items-center flex bg-black text-white px-4 py-3"
+          >
+            <button
+              onclick="copyTextToClipboard('first-result')"
+              class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+            >
+              Copy to Clipboard!
+            </button>
+          </div>
+          <div
+            id="clipboard-first"
+            class="max-w-lg mx-auto text-center items-center bg-black text-white px-4 py-3"
+          ></div>
+        </div>
+        <!-- second tweet start -->
+        <div class="second mt-16">
+          <div
+            class="max-w-lg mx-auto flex bg-black text-white px-4 py-3 border border-gray-700 rounded-xl shadow-md"
+          >
+            <img
+              src="/images/cat.jpg"
+              alt="Profile picture"
+              class="h-12 w-12 rounded-full mr-4 object-cover"
+            />
+
+            <div class="flex flex-col space-y-2">
+              <div class="flex items-center space-x-2">
+                <a href="#" class="font-bold hover:underline">Meowster</a>
+                <span class="font-light">@meowster</span>
+                <span class="font-light">&middot;</span>
+                <span class="font-light">1d</span>
+              </div>
+              <p id="second-result" class=""></p>
+            </div>
+          </div>
+          <div
+            class="max-w-lg mx-auto items-center flex bg-black text-white px-4 py-3"
+          >
+            <button
+              onclick="copyTextToClipboard('second-result')"
+              class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+            >
+              Copy to Clipboard!
+            </button>
+          </div>
+          <div
+            id="clipboard-second"
+            class="max-w-lg mx-auto text-center items-center bg-black text-white px-4 py-3"
+          ></div>
+        </div>
+        <!-- second tweet end -->
+        <!-- third tweet start -->
+        <div class="second mt-16">
+          <div
+            class="max-w-lg mx-auto flex bg-black text-white px-4 py-3 border border-gray-700 rounded-xl shadow-md"
+          >
+            <img
+              src="/images/cat3.jpg"
+              alt="Profile picture"
+              class="h-12 w-12 rounded-full mr-4 object-cover"
+            />
+
+            <div class="flex flex-col space-y-2">
+              <div class="flex items-center space-x-2">
+                <a href="#" class="font-bold hover:underline">Meowsprints</a>
+                <span class="font-light">@meowsprints</span>
+                <span class="font-light">&middot;</span>
+                <span class="font-light">1d</span>
+              </div>
+              <p id="third-result" class=""></p>
+            </div>
+          </div>
+          <div
+            class="max-w-lg mx-auto items-center flex bg-black text-white px-4 py-3"
+          >
+            <button
+              onclick="copyTextToClipboard('third-result')"
+              class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+            >
+              Copy to Clipboard!
+            </button>
+          </div>
+          <div
+            id="clipboard-third"
+            class="max-w-lg mx-auto text-center items-center bg-black text-white px-4 py-3"
+          ></div>
+        </div>
+        <!-- third tweet end -->
+      </div>
+    </div>
+    <!-- Tweet clone end -->
+    <input type="text" class="hidden" id="hidden-input" />
+    <!-- body div ends -->
+    <footer
+      id="contact"
+      class="max-w-2xl text-xs mt-64 text-center mx-auto text-white p-6 bg-black rounded-md shadow-md"
+    >
+      <div class="container mx-auto flex flex-col items-center">
+        <div class="mb-4">
+          <p class="">himanshubt7@gmail.com</p>
+        </div>
+
+        <div class="mb-4 items-center">
+          <p class="text-base hover:text-5xl transform hover:scale-110">
+            <a href="https://twitter.com/_HimanshuBisht" class="hover:text-lg"
+              >Twitter: @_HimanshuBisht</a
+            >
+          </p>
+        </div>
+
+        <div class="">
+          <p class="">© 2023 Xreator. Made with 🩷 in India.</p>
+          <p class="">Powered by OpenAI</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("responsive-menu").classList.toggle("hidden");
+        });
+
+      document
+        .getElementById("menu-close")
+        .addEventListener("click", function () {
+          document.getElementById("responsive-menu").classList.add("hidden");
+        });
+    </script>
+  </body>
+</html>
