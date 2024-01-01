@@ -20,7 +20,6 @@ const callApi = () => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       const tweet1 = JSON.parse(data).tweet1;
       const tweet2 = JSON.parse(data).tweet2;
       const tweet3 = JSON.parse(data).tweet3;
