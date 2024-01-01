@@ -15,10 +15,6 @@
       "src": "server.js",
       "use": "@now/node"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production",
-    "API_KEY": "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"
-  }
+  ]
 }
 
