@@ -8,6 +8,8 @@ const fetch = require('isomorphic-fetch');
 
 const API_KEY = process.env.API_KEY
 
+console.log("Api key = " + API_KEY);
+
 const app = express();
 
 app.use(cors());
